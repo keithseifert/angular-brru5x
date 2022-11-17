@@ -1,0 +1,6 @@
+<!-- this will display the button if the product provided as input is worth more than 700$. The click
+handler uses the EventEmitter we declared in the ts file to emit an event when the button is clicked
+See the product list component to see how the event is captured -->
+<p *ngIf="product && product.price > 700">
+  <button type="button" (click)="notify.emit()">Notify Me</button>
+</p>

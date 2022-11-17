@@ -1,0 +1,26 @@
+<h2>Products</h2>
+
+<!-- In the app.module we declared this route  path: 'products/:productId', component: ProductDetailsComponent   and here we added a router link so that this anchor will do to
+      the ProductDetailsComponent because it sees path /product and appends the product id so 
+      we can look up the product in that component-->
+
+<div *ngFor="let product of products">
+  <h3>
+    <a [title]="product.name + ' details'">
+      {{ product.name }}
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">Description: {{ product.description }}</p>
+
+  <!-- this button is bound to the share function in the ts file for this component -->
+
+  <button type="button" (click)="share()">Share</button>
+
+  <!-- we are in a for loop where product is the var name of each product in the
+  list // as we loop, so here we are creating an alert component and passing the
+  product as input. The alerts component emits an event using a variable named notify
+  so here we call the OnNotify function when we get (notify) -->
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+</div>
